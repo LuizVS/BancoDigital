@@ -139,6 +139,21 @@ public class ClienteService {
 	    }
 	}	
 	
+    private void validarCliente(Cliente cliente) {
+        // Validar CPF único
+        clienteRepository.findByCpf(cliente.getCpf()).ifPresent(existingCliente -> {
+            if (!existingCliente.getId().equals(cliente.getId())) {
+                throw new RuntimeException("CPF já cadastrado.");
+            }
+        });
+
+        // Validar idade
+        LocalDate hoje = LocalDate.now();
+        if (Period.between(cliente.getNascimento(), hoje).getYears() < 18) {
+            throw new RuntimeException("Cliente deve ser maior de idade (≥ 18 anos).");
+        }
+    }	
+	
 	public Cliente salvarCliente(String nome, Long cpf, LocalDate nascimento, String rua, String numero, String complemento, String cidade, String estado, String cep, String tipo)
 	{
 		validarCampos(nome, cpf, nascimento, cep);
@@ -159,14 +174,24 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 	
-	//public Cliente removerCliente(Long id)
-	//{
-	//	Cliente cliente = new Cliente();		
-	//	return clienteRepository.deleteById(cliente.getId());
-	//}
+    public Cliente buscarClientePorId(Long id) {
+        return clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+    }
 	
-	public List<Cliente> getClientes()
-	{
-		return clienteRepository.findAll();
-	}
+    public List<Cliente> listarClientes() {
+        return clienteRepository.findAll();
+    }
+    
+    public Cliente atualizarCliente(Long id, Cliente clienteAtualizado) {
+        Cliente clienteExistente = buscarClientePorId(id);
+        clienteAtualizado.setId(clienteExistente.getId());
+        validarCliente(clienteAtualizado);
+        return clienteRepository.save(clienteAtualizado);
+    }
+    
+    public void deletarCliente(Long id) {
+        clienteRepository.deleteById(id);
+    }    
+    
 }
