@@ -33,6 +33,7 @@ A aplicação permite o cadastro e gerenciamento de clientes, contas bancárias,
    Password: (deixe em branco)
 
 📬 Endpoints da API Banco Digital
+
 📄 Cliente
 * POST /clientes → Criar um novo cliente
 * GET /clientes/{id} → Buscar um cliente específico pelo ID
