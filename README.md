@@ -79,10 +79,13 @@ A aplicação permite o cadastro e gerenciamento de clientes, contas bancárias,
 * Todos os endpoints retornam respostas claras e mensagens de erro de validação.
 
 📄 Licença
+
 Este projeto está sob a licença MIT.
 
 🎯 Observação Final
+
 Esse projeto foi desenvolvido como parte de estudo para prática de arquitetura em camadas no Spring Boot e boas práticas de desenvolvimento de API RESTful.
 
 👤 Autor
-@LuizVS
+
+[@LuizVS](https://github.com/LuizVS/BancoDigital/commits?author=LuizVS)
