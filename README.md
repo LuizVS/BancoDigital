@@ -21,15 +21,21 @@ A aplicação permite o cadastro e gerenciamento de clientes, contas bancárias,
 
 🚀 Como Rodar o Projeto Localmente
 1. Clone o repositório:
+
    git clone https://github.com/LuizVS/BancoDigital.git
-2. Importe o projeto em sua IDE (Eclipse, IntelliJ, VS Code...).
-3. Execute a aplicação como Spring Boot Application.
-4. O sistema ficará disponível em:
+3. Importe o projeto em sua IDE (Eclipse, IntelliJ, VS Code...).
+4. Execute a aplicação como Spring Boot Application.
+5. O sistema ficará disponível em:
+   
    http://localhost:8080
-5. Acesse o console do banco H2 (opcional):
+7. Acesse o console do banco H2 (opcional):
+   
    http://localhost:8080/h2-console
+   
    JDBC URL: jdbc:h2:mem:testdb
+   
    Username: sa
+   
    Password: (deixe em branco)
 
 📬 Endpoints da API Banco Digital
